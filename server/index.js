@@ -86,6 +86,185 @@ const {
     })
   })
 
+
+
+
+
+
+// get all users
+app.get('/api/getusers',(req,res) => {
+    app
+    .get('db')
+    .getUsers()
+    .then(response => {
+      res.status(200).json(response)
+    })
+    .catch(err => {
+      res.status(500).json(response)
+    })
+  
+  })
+  
+  app.get('/api/products',(req,res)=>{
+      console.log(req)
+    req.app
+       .get('db')
+       .getProducts()
+       .then(response => {
+         res.status(200).json(response)
+       })
+       .catch(err=>{
+         res.status(500).json(err)
+       })
+  });
+  
+  // fetches product by id 
+  
+  app.get('/api/product/:id',(req,res,next) => {
+    app.get('db')
+    .getProductById(req.params.id)
+    .then(response => {
+      res.status(200).json(response)
+    })
+    .catch(err=>{
+      res.status(500).json(console.log(err))
+    })
+  });
+  app.get('/api/products/favorites',(req,res,next) => {
+    app.get('db')
+    .getAllFavorites([req.session.passport.user.authid])
+    .then(response => {
+      res.status(200).json(response)
+    })
+    .catch(err => {
+      res.status(500).json("message/getAllFavorites:",error)
+    })
+  });
+  app.delete('/api/products/favorites/delete/:id',(req,res,next)=>{
+    console.log("this is req.params:",req.params.id)
+    app.get('db')
+    .deleteFavoriteById([req.params.id,req.session.passport.user.authid])
+    .then(response => {
+      res.status(200).json(response)
+    })
+    .catch(err => {
+      res.status(500).json(err)
+    })
+  });
+  
+  app.post('/api/saveproduct',(req,res,next) => {
+    console.log("this is the req.body:",req.body.id)
+    app.get('db')
+    .saveItem([req.session.passport.user.authid,req.body.product_name,req.body.product_price,req.body.imageone,req.body.id])
+    .then(response => {
+        res.status(200).json(response);
+      })
+    .catch(error => {
+        res.status(500).json("this is the error message:", error)
+      })
+  });
+  
+  
+  
+  // get product by Brand
+  
+  app.get('/api/products/:id',(req,res,next) => {
+      app.get('db')
+      .getProductsByBrand([req.params.id])
+      .then(response => {
+        res.status(200).json(response)
+      }).catch(err => {
+        res.status(500).json(console.log(err))
+      })
+  } )
+  
+  app.get('/api/getorders',(req,res,next) => {
+    console.log("this is req.session auth id:" , req.session)
+    app.get('db')
+    .getUserOrderById([req.session.passport.user.authid]).then(response => {
+      res.status(200).json(response)
+    })
+  })
+  // add Product to database
+  
+  app.post('/api/products/add',(req,res)=>{
+    req.app
+       .get('db')
+       .addUserItem([req.body.productName, req.body.productDescription, req.body.productPrice,req.session.passport.user.authid])
+       .then(response => {
+         res.status(200).json(response)
+       })
+       .catch(err => {
+         res.status(500).json(err)
+       })
+  
+  });
+  // add order to database
+        
+  
+  
+  
+    app.post('/api/orderplaced',(req, res)=> {
+        console.log("this is the user in session:",req.session)
+        let cartPush = req.session.user.cart.forEach((cartItem, i)=>{
+        let value = parseFloat(req.session.user.cart[i].product_price)
+        // console.log("this is the user in session:",req.session)
+        console.log('THIS IS THE session:',req.session)
+        req.app
+        .get('db')
+        .addOrder([req.session.user.cart[i].product_name,value, req.session.passport.user.authid]).then(response => {
+          res.status(200).json(response)
+        }).catch(console.log)
+        })
+    })
+  
+    app.put('/api/stockupdate',(req,res,next)=>{
+      app.get('db')
+      .updateStock()
+      .then(response => {
+        res.status(200).json(response)
+      })
+      .catch(err => {
+        res.status(500).json(error)
+      })
+    })
+        
+  
+  // fetch cart in session
+  
+  app.get("/api/cart", (req, res, next) => res.status(200).json(req.session.user))
+  
+  //add item to cart
+  
+  app.post('/api/cart',(req,res,next) => {
+    console.log(req.session)
+    req.session.user.cart.push(req.body)
+    res.status(200).json(req.session.user)
+  } )
+  
+  // deletes item from cart
+  
+  app.delete('/api/cart/:id',cart_controllers.destroy)
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
   app.listen(port, () => {
     console.log(`Listening on Port: ${port}`);
