@@ -1,0 +1,14 @@
+.available-now-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* background-color: aquamarine; */
+  height: 180px;
+  width: 1000px;
+  border-bottom: 1px solid rgb(142, 142, 142);
+}
+
+.available-now-div > h2 {
+  color: rgba(75, 75, 75, 0.797);
+  font-weight: 300;
+}
