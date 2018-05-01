@@ -7,13 +7,7 @@ import Footer from "../Components/Footer/Footer";
 
 function HomePageview() {
   return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        flexDirection: "column"
-      }}
-    >
+    <div className="views">
       <MainHeaderComponent />
       <MainNavigation />
       <ImgSlideShowComponent />

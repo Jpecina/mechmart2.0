@@ -119,6 +119,15 @@ app.get("/api/featuredProducts", (req, res) => {
     });
 });
 
+app.get("/api/allProducts", (req, res) => {
+  req.app
+    .get("db")
+    .getAllProducts()
+    .then(response => {
+      res.status(200).json(response);
+    });
+});
+
 // app.get('/api/products',(req,res)=>{
 //     console.log(req)
 //   req.app
