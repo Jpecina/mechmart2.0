@@ -1,5 +1,24 @@
-.featured-list-render-body {
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Helvetica, sans-serif;
+}
+.featured-list-render-body-div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   width: 1000px;
   height: auto;
-  background-color: bisque;
+  min-height: 900px;
+  /* background-color: bisque; */
+  justify-content: space-around;
+}
+
+#featured-text-div {
+  /* background-color: aquamarine; */
+  height: 71px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  font-weight: 100;
 }
