@@ -8,8 +8,8 @@ import ProductView from "./Components/ProductView/ProductView";
 export default (
   <Switch>
     <Route exact path="/" component={HomePageview} />
-    <Route exact path="/Shop" component={ShopView} />
+    <Route exact path="/shop" component={ShopView} />
     <Route exact path="/shop/item/:id" component={ProductView} />
-    <Route exact path="/Cart" component={CartView} />
+    <Route exact path="/cart" component={CartView} />
   </Switch>
 );
