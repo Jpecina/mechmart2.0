@@ -8,7 +8,9 @@ function MainHeaderComponent(props) {
   return (
     <div className="header-logo-icons-main-div">
       <div id="logo">
-        <h1>MechMart</h1>
+        <Link to="/" style={styles.linkStyles}>
+          <h1>MechMart</h1>
+        </Link>
       </div>
       <div id="nav-icons">
         <h6>search</h6>
@@ -20,6 +22,15 @@ function MainHeaderComponent(props) {
     </div>
   );
 }
+
+const styles = {
+  linkStyles: {
+    color: "#666666",
+    textDecoration: "none",
+    listStyleType: "none",
+    fontSize: "18px"
+  }
+};
 
 const mapStateToProps = state => state;
 export default connect(mapStateToProps)(MainHeaderComponent);

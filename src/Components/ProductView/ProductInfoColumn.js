@@ -26,6 +26,7 @@ function ProductInfoColumn(props) {
       </div>
       <div className="product-info-column-section" id="bottom-container">
         <p>{product_description}</p>
+        
       </div>
     </div>
   );

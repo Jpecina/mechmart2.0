@@ -2,17 +2,39 @@ import React, { Component } from "react";
 import "./productViewStyles.css";
 
 class ImageGallery extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentImage: ""
+    };
+  }
+  componentWillMount() {
+    this.setState({ currentImage: `${this.props.firstImage}` });
+  }
+  handleClick(image) {
+    this.setState({ currentImage: image });
+  }
   render() {
-    console.log("in image gallery com", this.props.productImages);
-
+    console.log("in image gallery component", this.props.firstImage);
+    let imagesList = this.props.productImages.map((image, i) => {
+      console.log("map:", image);
+      return (
+        <div
+          onClick={() => this.handleClick(image)}
+          style={{
+            backgroundImage: `url(${image})`,
+            width: "113px",
+            height: "88px",
+            backgroundSize: "cover",
+            backgroundPosition: "center"
+          }}
+        />
+      );
+    });
     return (
       <div className="main-image-gallery-body">
-        <img alt="main image" />
-        <div className="small-image-container">
-          <img alt="small image" />
-          <img alt="small image" />
-          <img alt="small image" />
-        </div>
+        <img src={this.state.currentImage} id="main-product-image" />
+        <div className="small-image-container">{imagesList}</div>
       </div>
     );
   }

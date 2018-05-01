@@ -3,7 +3,7 @@ import "./featured.css";
 import { connect } from "react-redux";
 import { getFeaturedProducts } from "../../ducks/reducer";
 import ProductCard from "../ProductCards/ProductCard";
-
+import { Link } from "react-router-dom";
 class FeaturedComponent extends Component {
   componentDidMount() {
     this.props.getFeaturedProducts();
@@ -26,12 +26,17 @@ class FeaturedComponent extends Component {
       let parsedImagesArray = featuredProduct.product_images.split(",");
       console.log("this is parsedImages", parsedImagesArray);
       return (
-        <ProductCard
-          productImages={parsedImagesArray[0]}
-          productBrand={featuredProduct.product_brand}
-          productName={featuredProduct.product_name}
-          productPrice={featuredProduct.product_price}
-        />
+        <Link
+          to={`/shop/item/${featuredProduct.product_id}`}
+          style={styles.linkStyles}
+        >
+          <ProductCard
+            productImages={parsedImagesArray[0]}
+            productBrand={featuredProduct.product_brand}
+            productName={featuredProduct.product_name}
+            productPrice={featuredProduct.product_price}
+          />
+        </Link>
       );
     });
     return (
@@ -44,6 +49,16 @@ class FeaturedComponent extends Component {
     );
   }
 }
+
+const styles = {
+  linkStyles: {
+    color: "#666666",
+    textDecoration: "none",
+    listStyleType: "none",
+    fontSize: "18px"
+  }
+};
+
 const mapStateToProps = state => state;
 export default connect(mapStateToProps, { getFeaturedProducts })(
   FeaturedComponent

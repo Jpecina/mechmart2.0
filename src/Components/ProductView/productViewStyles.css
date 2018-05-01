@@ -1,10 +1,11 @@
 .main-image-gallery-body {
   height: 550px;
   width: 615px;
-  background-color: bisque;
+  /* background-color: bisque; */
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .product-view-container {
@@ -13,7 +14,7 @@
   height: auto;
   min-height: 800px;
   width: 1000px;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin-top: 80px;
 }
 
@@ -66,7 +67,15 @@
   margin-top: 20px;
 }
 .small-image-container {
+  /* background-color: aqua; */
   height: auto;
-  min-height: 88px;
-  width: 627px;
+  min-height: 100px;
+  width: 600px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+#main-product-image {
+  width: 600px;
+  /* background-color: blue; */
 }

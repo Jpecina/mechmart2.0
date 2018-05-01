@@ -30,7 +30,10 @@ class ProductView extends Component {
         <MainHeaderComponent />
         <MainNavigation />
         <div className="product-view-container">
-          <ImageGallery productImages={this.state.productImages} />
+          <ImageGallery
+            productImages={this.state.productImages}
+            firstImage={this.state.productImages[0]}
+          />
           <ProductInfoColumn product={this.state.product} />
         </div>
         <Footer />
