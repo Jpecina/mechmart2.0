@@ -17,7 +17,7 @@ class ShopRender extends Component {
 
     const productList = allProducts.map((product, i) => {
       let parsedImagesArray = product.product_images.split(",");
-      console.log("this is parsedImages", parsedImagesArray);
+      //   console.log("this is parsedImages", parsedImagesArray);
       return (
         <ProductCard
           productImages={parsedImagesArray[0]}

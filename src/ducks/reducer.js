@@ -6,17 +6,17 @@ const GET_All_PRODUCTS = "GET_All_PRODUCTS";
 
 // ACTION CREATORS
 
-// export function getUsers() {
-//   return {
-//     type: GET_USERS,
-//     payload: axios
-//       .get("/api/getusers")
-//       .then(response => {
-//         return response.data;
-//       })
-//       .catch(err => console.log(err))
-//   };
-// }
+export function getUsers() {
+  return {
+    type: GET_USERS,
+    payload: axios
+      .get("/api/getusers")
+      .then(response => {
+        return response.data;
+      })
+      .catch(err => console.log(err))
+  };
+}
 export function getAllProducts() {
   return {
     type: GET_All_PRODUCTS,
@@ -54,19 +54,19 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    // case `${GET_USERS}_PENDING`:
-    //   return Object.assign({}, state, { isLoading: true });
+    case `${GET_USERS}_PENDING`:
+      return Object.assign({}, state, { isLoading: true });
 
-    // case `${GET_USERS}_FULFILLED`:
-    //   return Object.assign({}, state, {
-    //     isLoading: false,
-    //     users: action.payload
-    //   });
-    // case `${GET_USERS}_REJECTED`:
-    //   return Object.assign({}, state, {
-    //     isLoading: false,
-    //     didError: true
-    //   });
+    case `${GET_USERS}_FULFILLED`:
+      return Object.assign({}, state, {
+        isLoading: false,
+        users: action.payload
+      });
+    case `${GET_USERS}_REJECTED`:
+      return Object.assign({}, state, {
+        isLoading: false,
+        didError: true
+      });
     case `${GET_All_PRODUCTS}_PENDING`:
       return Object.assign({}, state, { isLoading: true });
 
