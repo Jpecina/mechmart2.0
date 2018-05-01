@@ -1,0 +1,25 @@
+.footer-block-body {
+  height: 185px;
+  width: 333px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border-top: 1px solid rgb(206, 206, 206);
+  border-bottom: 1px solid rgb(206, 206, 206);
+  color: rgb(160, 160, 160);
+}
+
+#middle-footer-block {
+  border-left: 1px solid rgb(206, 206, 206);
+  border-right: 1px solid rgb(206, 206, 206);
+}
+
+.footer {
+  /* background-color: aquamarine; */
+  /* color: rgba(206, 206, 206, 0.687); */
+  width: 1000px;
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
