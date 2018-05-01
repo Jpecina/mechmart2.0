@@ -3,6 +3,7 @@ import "../Featured/featured.css";
 import { connect } from "react-redux";
 import { getAllProducts } from "../../ducks/reducer";
 import ProductCard from "../ProductCards/ProductCard";
+import { Link } from "react-router-dom";
 
 class ShopRender extends Component {
   componentDidMount() {
@@ -19,12 +20,14 @@ class ShopRender extends Component {
       let parsedImagesArray = product.product_images.split(",");
       //   console.log("this is parsedImages", parsedImagesArray);
       return (
-        <ProductCard
-          productImages={parsedImagesArray[0]}
-          productBrand={product.product_brand}
-          productName={product.product_name}
-          productPrice={product.product_price}
-        />
+        <Link to={`/shop/item/${product.product_id}`} style={styles.linkStyles}>
+          <ProductCard
+            productImages={parsedImagesArray[0]}
+            productBrand={product.product_brand}
+            productName={product.product_name}
+            productPrice={product.product_price}
+          />
+        </Link>
       );
     });
     return (
@@ -37,5 +40,15 @@ class ShopRender extends Component {
     );
   }
 }
+
+const styles = {
+  linkStyles: {
+    color: "#666666",
+    textDecoration: "none",
+    listStyleType: "none",
+    fontSize: "18px"
+  }
+};
+
 const mapStateToProps = state => state;
 export default connect(mapStateToProps, { getAllProducts })(ShopRender);
