@@ -3,7 +3,6 @@ import axios from "axios";
 const GET_USERS = "GET_USERS";
 const GET_FEATURED_PRODUCTS = "GET_FEATURED_PRODUCTS";
 const GET_All_PRODUCTS = "GET_All_PRODUCTS";
-const GET_PRODUCT_BY_ID = "GET_PRODUCT_BY_ID";
 // ACTION CREATORS
 
 export function getUsers() {
@@ -41,17 +40,6 @@ export function getFeaturedProducts() {
       .catch(err => console.log)
   };
 }
-export function getProductById(id) {
-  return {
-    type: GET_PRODUCT_BY_ID,
-    payload: axios
-      .get(`http://localhost:3001/api/product/${id}`)
-      .then(response => {
-        return response.data;
-      })
-      .catch(err => console.log)
-  };
-}
 
 // INITIAL STATE
 
@@ -60,8 +48,7 @@ const initialState = {
   isLoading: false,
   didError: false,
   featuredProducts: [],
-  allProducts: [],
-  productById: []
+  allProducts: []
 };
 
 export default function reducer(state = initialState, action) {
@@ -107,20 +94,7 @@ export default function reducer(state = initialState, action) {
         isLoading: false,
         didError: true
       });
-    case `${GET_PRODUCT_BY_ID}_PENDING`:
-      return Object.assign({}, state, { isLoading: true });
 
-    case `${GET_PRODUCT_BY_ID}_FULFILLED`:
-      console.log("actions.payload", action.payload);
-      return Object.assign({}, state, {
-        isLoading: false,
-        productById: action.payload
-      });
-    case `${GET_PRODUCT_BY_ID}_REJECTED`:
-      return Object.assign({}, state, {
-        isLoading: false,
-        didError: true
-      });
     default:
       return state;
   }

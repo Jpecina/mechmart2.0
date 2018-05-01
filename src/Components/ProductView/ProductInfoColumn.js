@@ -20,11 +20,11 @@ function ProductInfoColumn(props) {
       <div className="product-info-column-section">
         <div id="quantity-input-div">
           <h4>Quantity</h4>
-          <input />
+          <input id="quantity-input" />
         </div>
-        <button id="checkout-button" />
+        <button id="checkout-button">Checkout</button>
       </div>
-      <div className="product-info-column-section">
+      <div className="product-info-column-section" id="bottom-container">
         <p>{product_description}</p>
       </div>
     </div>

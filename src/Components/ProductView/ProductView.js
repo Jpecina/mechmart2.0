@@ -10,13 +10,17 @@ class ProductView extends Component {
   constructor() {
     super();
     this.state = {
-      product: []
+      product: [],
+      productImages: []
     };
   }
   componentDidMount() {
     axios.get(`/api/product/${this.props.match.params.id}`).then(response => {
       console.log("this is product response", response.data[0]);
-      this.setState({ product: response.data[0] });
+      this.setState({
+        product: response.data[0],
+        productImages: response.data[0].product_images.split(",")
+      });
     });
   }
 
@@ -26,7 +30,7 @@ class ProductView extends Component {
         <MainHeaderComponent />
         <MainNavigation />
         <div className="product-view-container">
-          <ImageGallery />
+          <ImageGallery productImages={this.state.productImages} />
           <ProductInfoColumn product={this.state.product} />
         </div>
         <Footer />
@@ -36,5 +40,3 @@ class ProductView extends Component {
 }
 
 export default ProductView;
-
-
