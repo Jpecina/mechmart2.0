@@ -151,7 +151,7 @@ app.get("/api/cart", (req, res, next) =>
 //add item to cart
 
 app.post("/api/cart", (req, res, next) => {
-  console.log(req.session);
+  console.log("cart add ", req.body);
   req.session.user.cart.push(req.body);
   res.status(200).json(req.session.user);
 });

@@ -1,10 +1,9 @@
-module.exports = (req,res,next) => {
-    if(!req.session.user){
-        req.session.user = {
-            cart:[],
+module.exports = (req, res, next) => {
+  if (!req.session.user) {
+    req.session.user = {
+      cart: []
+    };
+  }
 
-        }
-    }
-    
-    next();    
-}
+  next();
+};

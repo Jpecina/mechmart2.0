@@ -13,6 +13,7 @@ class ProductView extends Component {
       product: [],
       productImages: []
     };
+    this.addToCart = this.addToCart.bind(this);
   }
   componentDidMount() {
     axios.get(`/api/product/${this.props.match.params.id}`).then(response => {
@@ -23,7 +24,10 @@ class ProductView extends Component {
       });
     });
   }
-
+  addToCart(product) {
+    console.log("this is the product cart:", product);
+    axios.post("/api/cart", product);
+  }
   render() {
     return (
       <div className="views">
@@ -34,7 +38,10 @@ class ProductView extends Component {
             productImages={this.state.productImages}
             firstImage={this.state.productImages[0]}
           />
-          <ProductInfoColumn product={this.state.product} />
+          <ProductInfoColumn
+            product={this.state.product}
+            handleClick={this.addToCart}
+          />
         </div>
         <Footer />
       </div>

@@ -8,8 +8,7 @@ function ProductInfoColumn(props) {
     product_name,
     product_price,
     product_description,
-    switch_type,
-    product_id
+    switch_type
   } = props.product;
   return (
     <div className="product-info-column-main">
@@ -23,8 +22,11 @@ function ProductInfoColumn(props) {
           <h4>Quantity</h4>
           <input id="quantity-input" />
         </div>
-        <button id="checkout-button" onClick={props.onClick(product_id)}>
-          Checkout
+        <button
+          id="checkout-button"
+          onClick={() => props.handleClick(props.product)}
+        >
+          Add To Cart
         </button>
       </div>
       <div className="product-info-column-section" id="bottom-container">
