@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
 
 function MainHeaderComponent(props) {
   function handleUser() {}
@@ -32,5 +31,4 @@ const styles = {
   }
 };
 
-const mapStateToProps = state => state;
-export default connect(mapStateToProps)(MainHeaderComponent);
+export default MainHeaderComponent;

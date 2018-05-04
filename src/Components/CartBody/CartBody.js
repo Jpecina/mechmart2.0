@@ -8,8 +8,7 @@ class CartBody extends Component {
     super();
     this.state = {
       cart: [],
-      total: 0,
-      image: ""
+      total: 0
     };
   }
   componentDidMount() {
@@ -33,9 +32,9 @@ class CartBody extends Component {
         product_brand,
         product_images
       } = product;
-      console.log("map render images", product_images);
 
-      const parsedArr = product_images.splice(",");
+      const parsedArr = product_images.split(",");
+      console.log("map render images", parsedArr[0]);
       return (
         <CartItem
           product={product}
@@ -43,7 +42,7 @@ class CartBody extends Component {
           productName={product_name}
           productPrice={product_price}
           productBrand={product_brand}
-          //   productImages={parsedImages[0]}
+          productImages={parsedArr[0]}
         />
       );
     });
@@ -60,6 +59,5 @@ class CartBody extends Component {
     );
   }
 }
-const mapStateToProps = state => state;
 
 export default CartBody;
