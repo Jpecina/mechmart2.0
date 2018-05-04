@@ -4,7 +4,7 @@ class CartItemContainer extends Component {
   render() {
     return (
       <div className="cart-item-container-main-div">
-        {/*<div className="item-info-container" id="cart-item-header">
+        <div className="item-info-container" id="cart-item-header">
           <div className="item-info-first-item">
             <h4>Product</h4>
           </div>
@@ -17,7 +17,7 @@ class CartItemContainer extends Component {
           <div className="item-info-reg-item">
             <h4>Total</h4>
           </div>
-    </div>*/}
+        </div>
         {this.props.children}
       </div>
     );

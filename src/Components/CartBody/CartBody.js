@@ -32,7 +32,6 @@ class CartBody extends Component {
         product_brand,
         product_images
       } = product;
-
       const parsedArr = product_images.split(",");
       console.log("map render images", parsedArr[0]);
       return (

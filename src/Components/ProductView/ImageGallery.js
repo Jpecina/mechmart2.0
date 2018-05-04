@@ -8,8 +8,8 @@ class ImageGallery extends Component {
       currentImage: ""
     };
   }
-  componentWillMount() {
-    this.setState({ currentImage: `${this.props.firstImage}` });
+  componentDidMount() {
+    this.setState({ currentImage: this.props.firstImage });
   }
   handleClick(image) {
     this.setState({ currentImage: image });

@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Ionicon from "react-ionicons";
 
 function MainHeaderComponent(props) {
   function handleUser() {}
-  console.log("this is users", props.users);
   return (
     <div className="header-logo-icons-main-div">
       <div id="logo">
@@ -12,10 +12,11 @@ function MainHeaderComponent(props) {
         </Link>
       </div>
       <div id="nav-icons">
-        <h6>search</h6>
-        <h6>cart</h6>
+        <Ionicon icon="md-search" fontSize="30px" />
+
+        <Ionicon icon="ios-basket-outline" fontSize="30px" />
         <a href={process.env.REACT_APP_LOGIN}>
-          <h6>Login</h6>
+          <Ionicon icon="md-contact" fontSize="30px" />
         </a>
       </div>
     </div>

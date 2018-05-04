@@ -3,7 +3,6 @@ import axios from "axios";
 const GET_USERS = "GET_USERS";
 const GET_FEATURED_PRODUCTS = "GET_FEATURED_PRODUCTS";
 const GET_All_PRODUCTS = "GET_All_PRODUCTS";
-// const GET_USER_CART = "GET_USER_CART";
 // ACTION CREATORS
 
 export function getUsers() {
@@ -41,17 +40,6 @@ export function getFeaturedProducts() {
       .catch(err => console.log)
   };
 }
-// export function getUserCart() {
-//   return {
-//     type: GET_USER_CART,
-//     payload: axios
-//       .get("http://localhost:3001/api/cart")
-//       .then(response => {
-//         return response.data.cart;
-//       })
-//       .catch(err => console.log(err))
-//   };
-// }
 
 // INITIAL STATE
 
@@ -61,7 +49,6 @@ const initialState = {
   didError: false,
   featuredProducts: [],
   allProducts: []
-  // cart: []
 };
 
 export default function reducer(state = initialState, action) {
@@ -107,20 +94,6 @@ export default function reducer(state = initialState, action) {
         isLoading: false,
         didError: true
       });
-    // case `${GET_USER_CART}_PENDING`:
-    //   return Object.assign({}, state, { isLoading: true });
-
-    // case `${GET_USER_CART}_FULFILLED`:
-    //   console.log("actions.payload", action.payload);
-    //   return Object.assign({}, state, {
-    //     isLoading: false,
-    //     cart: action.payload
-    //   });
-    // case `${GET_USER_CART}_REJECTED`:
-    //   return Object.assign({}, state, {
-    //     isLoading: false,
-    //     didError: true
-    //   });
 
     default:
       return state;

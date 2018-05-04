@@ -10,7 +10,17 @@ function MainHeader() {
           <li>Home</li>
         </Link>
         <Link to="/shop" style={styles.linkStyles}>
-          <li id="shop-on-hover">Shop</li>
+          <div className="dropdown">
+            <li className="dropbtn">Shop</li>
+            <div className="dropdown-content">
+              <Link to="/shop" style={styles.dropDownLinkStyles}>
+                Keyboards
+              </Link>
+              <Link to="/cart" style={styles.dropDownLinkStyles}>
+                KeySets
+              </Link>
+            </div>
+          </div>
         </Link>
         <Link to="/cart" style={styles.linkStyles}>
           <li>Cart</li>
@@ -26,6 +36,16 @@ const styles = {
     textDecoration: "none",
     listStyleType: "none",
     fontSize: "18px"
+  },
+  dropDownLinkStyles: {
+    height: "50px",
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    textDecoration: "none",
+    backgroundColor: "#666666",
+    color: "white"
   }
 };
 export default MainHeader;
