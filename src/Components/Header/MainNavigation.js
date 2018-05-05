@@ -54,14 +54,15 @@ const styles = {
     fontSize: "18px"
   },
   dropDownLinkStyles: {
-    height: "50px",
+    minHeight: "50px",
     width: "100%",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     textDecoration: "none",
-    backgroundColor: "#666666",
-    color: "white"
+    backgroundColor: "#E8E8E8",
+    color: "#595959",
+    padding: "10px"
   }
 };
 

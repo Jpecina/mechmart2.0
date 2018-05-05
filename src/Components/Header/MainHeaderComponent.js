@@ -9,6 +9,8 @@ class MainHeaderComponent extends Component {
     this.state = {
       user: []
     };
+    this.handleLogin = this.handleLogin.bind(this);
+    this.logOut = this.logOut.bind(this);
   }
   componentDidMount() {
     axios.get("/api/me").then(response => {
@@ -17,6 +19,30 @@ class MainHeaderComponent extends Component {
     });
   }
 
+  handleLogin() {
+    if (!this.state.user) {
+      return (
+        
+          <a href={process.env.REACT_APP_LOGIN}>
+            <Ionicon icon="md-contact" fontSize="30px" />
+          </a>
+        
+      );
+    } else {
+      return (
+        <div>
+          {this.state.user}
+          <button onClick={() => this.logOut()}>LogOut</button>
+        </div>
+      );
+    }
+  }
+  logOut() {
+    axios.get("/api/logout").then(response => {
+      console.log("logout response", response);
+      this.setState({ user: response.data });
+    });
+  }
   render() {
     // console.log("the user after mount", this.state.user);
     return (
@@ -31,9 +57,7 @@ class MainHeaderComponent extends Component {
           <Link to="/cart">
             <Ionicon icon="ios-basket-outline" fontSize="30px" />
           </Link>
-          <a href={process.env.REACT_APP_LOGIN}>
-            <Ionicon icon="md-contact" fontSize="30px" />
-          </a>
+          {this.handleLogin()}
         </div>
       </div>
     );

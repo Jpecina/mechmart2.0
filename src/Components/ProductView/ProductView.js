@@ -28,7 +28,7 @@ class ProductView extends Component {
   addToCart(product) {
     console.log("this is the product cart:", product);
     axios.post("/api/cart", product).then(response => {
-      console.log("this is the response on add", response);
+      // console.log("this is the response on add", response);
       if (response.status === 200) {
         swal(`${response.data.cart[0].product_name} Added To Cart`);
       }

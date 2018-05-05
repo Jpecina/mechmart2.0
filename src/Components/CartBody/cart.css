@@ -91,7 +91,7 @@
 .checkout-total {
   height: 145px;
   width: 240px;
-  background-color: rgb(179, 127, 63);
+  /* background-color: rgb(179, 127, 63); */
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -104,8 +104,13 @@
   color: rgb(179, 179, 179);
   font-size: 15px;
   font-style: italic;
+  font-weight: 200;
 }
 #checkout {
   justify-content: flex-end;
   border-bottom: 1px solid rgb(194, 194, 194);
+}
+
+.checkout-total > h1 {
+  font-weight: 300;
 }

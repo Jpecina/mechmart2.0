@@ -22,6 +22,7 @@ class ShopRender extends Component {
       return (
         <Link to={`/shop/item/${product.product_id}`} style={styles.linkStyles}>
           <ProductCard
+            key={product.product_id}
             productImages={parsedImagesArray[0]}
             productBrand={product.product_brand}
             productName={product.product_name}

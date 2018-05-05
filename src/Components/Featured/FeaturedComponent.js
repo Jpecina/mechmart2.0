@@ -31,6 +31,7 @@ class FeaturedComponent extends Component {
           style={styles.linkStyles}
         >
           <ProductCard
+            key={featuredProduct.product_id}
             productImages={parsedImagesArray[0]}
             productBrand={featuredProduct.product_brand}
             productName={featuredProduct.product_name}

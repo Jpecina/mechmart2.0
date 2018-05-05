@@ -18,6 +18,7 @@ class ImageGallery extends Component {
       // console.log("map:", image);
       return (
         <div
+          key={i}
           onClick={() => this.handleClick(image)}
           style={{
             backgroundImage: `url(${image})`,
