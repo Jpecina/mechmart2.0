@@ -8,9 +8,7 @@ class ImageGallery extends Component {
       currentImage: ""
     };
   }
-  componentDidMount() {
-    this.setState({ currentImage: this.props.firstImage });
-  }
+
   handleClick(image) {
     this.setState({ currentImage: image });
   }
@@ -33,7 +31,10 @@ class ImageGallery extends Component {
     });
     return (
       <div className="main-image-gallery-body">
-        <img src={this.state.currentImage} id="main-product-image" />
+        <img
+          src={this.state.currentImage || this.props.productImages[0]}
+          id="main-product-image"
+        />
         <div className="small-image-container">{imagesList}</div>
       </div>
     );

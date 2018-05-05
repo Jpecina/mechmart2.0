@@ -1,6 +1,7 @@
 import React from "react";
 import "./footer.css";
 import FooterBlock from "./FooterBlock";
+import * as FontAwesome from "react-icons/lib/fa";
 
 function Footer() {
   return (
@@ -13,11 +14,19 @@ function Footer() {
         </FooterBlock>
         <FooterBlock middleStyle="middle-footer-block">
           <h3>Follow Us</h3>
-          <h5>social icons</h5>
+          <div>
+            <FontAwesome.FaInstagram className="payment-icons" />
+            <FontAwesome.FaFacebookOfficial className="payment-icons" />
+          </div>
         </FooterBlock>
 
         <FooterBlock>
-          <h4>payment icons</h4>
+          <div className="payment-icons-container">
+            <FontAwesome.FaCcStripe className="payment-icons" />
+            <FontAwesome.FaCcVisa className="payment-icons" />
+            <FontAwesome.FaCcPaypal className="payment-icons" />
+            <FontAwesome.FaCcAmex className="payment-icons" />
+          </div>
         </FooterBlock>
       </div>
     </div>

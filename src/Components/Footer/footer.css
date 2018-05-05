@@ -25,3 +25,20 @@
   margin-top: 10px;
   margin-bottom: 20px;
 }
+.payment-icons {
+  height: 45px;
+  width: 45px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.payment-icons-container {
+  height: 90%;
+  width: 90%;
+  /* background-color: rgb(160, 118, 118); */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 10px;
+  align-items: center;
+}
