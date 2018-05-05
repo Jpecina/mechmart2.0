@@ -23,7 +23,7 @@ class CartBody extends Component {
       })
       .catch(console.log());
   }
-  deleteFromCartls(id) {
+  deleteFromCart(id) {
     axios.delete(`/api/cart/${id}`).then(res => {
       this.setState({
         cart: res.data.cart
@@ -32,6 +32,10 @@ class CartBody extends Component {
   }
   render() {
     // console.log("this is the cart body props", this.state.cart);
+    let totalOfItems = this.state.cart.reduce(
+      (total, currentValue) => total + Number(currentValue.product_price),
+      0
+    );
     const cart = this.state.cart;
     const cartListRender = cart.map((product, i) => {
       const {
@@ -64,7 +68,13 @@ class CartBody extends Component {
         <div className="main-cart-body-section">
           <CartItemContainer>{cartListRender}</CartItemContainer>
         </div>
-        <div className="main-cart-body-section">dropdowns</div>
+        <div className="main-cart-body-section" id="checkout">
+          <div className="checkout-total">
+            <h1>${totalOfItems}</h1>
+            <h4>Excludes Tax And Shipping</h4>
+            <button>CheckOut</button>
+          </div>
+        </div>
       </div>
     );
   }
