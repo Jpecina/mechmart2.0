@@ -3,6 +3,7 @@ import axios from "axios";
 const GET_USERS = "GET_USERS";
 const GET_FEATURED_PRODUCTS = "GET_FEATURED_PRODUCTS";
 const GET_All_PRODUCTS = "GET_All_PRODUCTS";
+const GET_PRODUCTS_BY_CATEGORY = "GET_PRODUCTS_BY_CATEGORY";
 // ACTION CREATORS
 
 export function getUsers() {
@@ -41,6 +42,17 @@ export function getFeaturedProducts() {
   };
 }
 
+export function getProductsByCategory(category) {
+  return {
+    type: GET_PRODUCTS_BY_CATEGORY,
+    payload: axios
+      .get(`http://localhost:3001/api/products/${category}`)
+      .then(response => {
+        return response.data;
+      })
+      .catch(console.log)
+  };
+}
 // INITIAL STATE
 
 const initialState = {
@@ -94,7 +106,20 @@ export default function reducer(state = initialState, action) {
         isLoading: false,
         didError: true
       });
+    case `${GET_PRODUCTS_BY_CATEGORY}_PENDING`:
+      return Object.assign({}, state, { isLoading: true });
 
+    case `${GET_PRODUCTS_BY_CATEGORY}_FULFILLED`:
+      console.log("actions.payload", action.payload);
+      return Object.assign({}, state, {
+        isLoading: false,
+        allProducts: action.payload
+      });
+    case `${GET_PRODUCTS_BY_CATEGORY}_REJECTED`:
+      return Object.assign({}, state, {
+        isLoading: false,
+        didError: true
+      });
     default:
       return state;
   }

@@ -142,6 +142,18 @@ app.get("/api/product/:id", (req, res) => {
       res.status(500).json(console.log("this is error", error));
     });
 });
+app.get("/api/products/:id", (req, res) => {
+  console.log(req.params);
+  app
+    .get("db")
+    .getProductByCategory(req.params.id)
+    .then(response => {
+      res.status(200).json(response);
+    })
+    .catch(error => {
+      res.status(500).json(console.log("this is error", error));
+    });
+});
 // fetch cart in session
 
 app.get("/api/cart", (req, res, next) =>

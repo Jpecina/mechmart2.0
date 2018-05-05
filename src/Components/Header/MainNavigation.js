@@ -1,8 +1,10 @@
 import React from "react";
 import "./mainNav.css";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { getProductsByCategory } from "../../ducks/reducer";
 
-function MainHeader() {
+function MainHeader(props) {
   return (
     <div className="main-nav-div">
       <div className="nav-list-div">
@@ -14,10 +16,24 @@ function MainHeader() {
             <li className="dropbtn">Shop</li>
             <div className="dropdown-content">
               <Link to="/shop" style={styles.dropDownLinkStyles}>
-                Keyboards
+                <div onClick={() => props.getProductsByCategory("Keyboards")}>
+                  KEYBOARDS
+                </div>
               </Link>
-              <Link to="/cart" style={styles.dropDownLinkStyles}>
-                KeySets
+              <Link to="/shop" style={styles.dropDownLinkStyles}>
+                <div onClick={() => props.getProductsByCategory("Keysets")}>
+                  KEYSETS
+                </div>
+              </Link>
+              <Link to="/shop" style={styles.dropDownLinkStyles}>
+                <div onClick={() => props.getProductsByCategory("Accessories")}>
+                  ACCESSORIES
+                </div>
+              </Link>
+              <Link to="/shop" style={styles.dropDownLinkStyles}>
+                <div onClick={() => props.getProductsByCategory("Add-ons")}>
+                  ADD-ONS
+                </div>
               </Link>
             </div>
           </div>
@@ -48,4 +64,6 @@ const styles = {
     color: "white"
   }
 };
-export default MainHeader;
+
+const mapStateToProps = state => state;
+export default connect(mapStateToProps, { getProductsByCategory })(MainHeader);

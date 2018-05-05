@@ -5,6 +5,7 @@ import MainHeaderComponent from "../Header/MainHeaderComponent";
 import Footer from "../Footer/Footer";
 import MainNavigation from "../Header/MainNavigation";
 import axios from "axios";
+import swal from "sweetalert";
 
 class ProductView extends Component {
   constructor() {
@@ -26,7 +27,12 @@ class ProductView extends Component {
   }
   addToCart(product) {
     console.log("this is the product cart:", product);
-    axios.post("/api/cart", product);
+    axios.post("/api/cart", product).then(response => {
+      console.log("this is the response on add", response);
+      if (response.status === 200) {
+        swal(`${response.data.cart[0].product_name} Added To Cart`);
+      }
+    });
   }
   render() {
     return (
