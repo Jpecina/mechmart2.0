@@ -10,6 +10,7 @@ class CartBody extends Component {
       cart: [],
       total: 0
     };
+    this.deleteFromCart = this.deleteFromCart.bind(this);
   }
   componentDidMount() {
     axios
@@ -22,18 +23,26 @@ class CartBody extends Component {
       })
       .catch(console.log());
   }
+  deleteFromCartls(id) {
+    axios.delete(`/api/cart/${id}`).then(res => {
+      this.setState({
+        cart: res.data.cart
+      });
+    });
+  }
   render() {
-    console.log("this is the cart body props", this.state.cart);
+    // console.log("this is the cart body props", this.state.cart);
     const cart = this.state.cart;
     const cartListRender = cart.map((product, i) => {
       const {
         product_name,
         product_price,
         product_brand,
-        product_images
+        product_images,
+        product_id
       } = product;
       const parsedArr = product_images.split(",");
-      console.log("map render images", parsedArr[0]);
+      // console.log("map render images", parsedArr[0]);
       return (
         <CartItem
           product={product}
@@ -42,6 +51,8 @@ class CartBody extends Component {
           productPrice={product_price}
           productBrand={product_brand}
           productImages={parsedArr[0]}
+          productId={product_id}
+          deleteFromCart={this.deleteFromCart}
         />
       );
     });

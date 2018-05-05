@@ -13,9 +13,9 @@ class ImageGallery extends Component {
     this.setState({ currentImage: image });
   }
   render() {
-    console.log("in image gallery component", this.props.firstImage);
+    // console.log("in image gallery component", this.props.firstImage);
     let imagesList = this.props.productImages.map((image, i) => {
-      console.log("map:", image);
+      // console.log("map:", image);
       return (
         <div
           onClick={() => this.handleClick(image)}

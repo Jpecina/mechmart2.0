@@ -7,24 +7,24 @@ import { Link } from "react-router-dom";
 class FeaturedComponent extends Component {
   componentDidMount() {
     this.props.getFeaturedProducts();
-    console.log(this.props);
+    // console.log(this.props);
   }
   handleRender() {}
   render() {
-    console.log(this.props.featuredProducts);
+    // console.log(this.props.featuredProducts);
     const { featuredProducts } = this.props;
-    console.log(featuredProducts);
+    // console.log(featuredProducts);
     if (!featuredProducts) {
       return <div>loading</div>;
     }
 
     const featuredList = featuredProducts.map((featuredProduct, i) => {
-      console.log(
-        "this is the featured product",
-        featuredProduct.product_images
-      );
+      // console.log(
+      //   "this is the featured product",
+      //   featuredProduct.product_images
+      // );
       let parsedImagesArray = featuredProduct.product_images.split(",");
-      console.log("this is parsedImages", parsedImagesArray);
+      // console.log("this is parsedImages", parsedImagesArray);
       return (
         <Link
           to={`/shop/item/${featuredProduct.product_id}`}

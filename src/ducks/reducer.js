@@ -82,7 +82,7 @@ export default function reducer(state = initialState, action) {
       return Object.assign({}, state, { isLoading: true });
 
     case `${GET_All_PRODUCTS}_FULFILLED`:
-      console.log("actions.payload", action.payload);
+      // console.log("actions.payload", action.payload);
       return Object.assign({}, state, {
         isLoading: false,
         allProducts: action.payload
@@ -96,7 +96,7 @@ export default function reducer(state = initialState, action) {
       return Object.assign({}, state, { isLoading: true });
 
     case `${GET_FEATURED_PRODUCTS}_FULFILLED`:
-      console.log("actions.payload", action.payload);
+      // console.log("actions.payload", action.payload);
       return Object.assign({}, state, {
         isLoading: false,
         featuredProducts: action.payload
@@ -110,7 +110,7 @@ export default function reducer(state = initialState, action) {
       return Object.assign({}, state, { isLoading: true });
 
     case `${GET_PRODUCTS_BY_CATEGORY}_FULFILLED`:
-      console.log("actions.payload", action.payload);
+      // console.log("actions.payload", action.payload);
       return Object.assign({}, state, {
         isLoading: false,
         allProducts: action.payload

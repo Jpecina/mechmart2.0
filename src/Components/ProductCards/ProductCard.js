@@ -2,7 +2,7 @@ import React from "react";
 import "./productCard.css";
 
 function ProductCard(props) {
-  console.log("this is image", props.productImages);
+  // console.log("this is image", props.productImages);
   return (
     <div className="main-card-body">
       <div

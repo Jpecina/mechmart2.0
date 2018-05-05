@@ -1,7 +1,9 @@
 import React from "react";
 import "./cart.css";
+import { TiDeleteOutline } from "react-icons/lib/ti";
 
 function CartItem(props) {
+  console.log("this is props", props);
   return (
     <div className="item-info-container">
       <div className="item-info-first-item">
@@ -21,7 +23,12 @@ function CartItem(props) {
       <div className="item-info-reg-item">
         <h4>${props.productPrice}</h4>
       </div>
-      <div className="item-info-reg-last-item" />
+      <div className="item-info-reg-last-item">
+        <TiDeleteOutline
+          style={{ height: "25px", width: "25px" }}
+          onClick={() => props.deleteFromCart(props.productId)}
+        />
+      </div>
     </div>
   );
 }
