@@ -9,6 +9,19 @@ const Auth0Strategy = require("passport-auth0");
 const CreateInitialSession = require("./middleware/session");
 const cart_controllers = require("./controller/cart_controller");
 
+// Set your secret key: remember to change this to your live secret key in production
+// See your keys here: https://dashboard.stripe.com/account/apikeys
+var stripe = require("stripe")("sk_test_1hVjh2BGrltHaeEDMVkG9nBF");
+
+const charge = stripe.charges.create({
+  amount: 999,
+  currency: "usd",
+  source: "tok_visa",
+  receipt_email: "jenny.rosen@example.com"
+});
+charge.then(response => console.log(response));
+console.log(charge);
+
 const port = 3001;
 
 const app = express();

@@ -22,11 +22,9 @@ class MainHeaderComponent extends Component {
   handleLogin() {
     if (!this.state.user) {
       return (
-        
-          <a href={process.env.REACT_APP_LOGIN}>
-            <Ionicon icon="md-contact" fontSize="30px" />
-          </a>
-        
+        <a href={process.env.REACT_APP_LOGIN}>
+          <Ionicon icon="md-contact" fontSize="30px" />
+        </a>
       );
     } else {
       return (
@@ -39,8 +37,7 @@ class MainHeaderComponent extends Component {
   }
   logOut() {
     axios.get("/api/logout").then(response => {
-      console.log("logout response", response);
-      this.setState({ user: response.data });
+      return response;
     });
   }
   render() {
