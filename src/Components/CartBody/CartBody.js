@@ -3,6 +3,8 @@ import "./cart.css";
 import CartItemContainer from "./CartItemContainer";
 import axios from "axios";
 import CartItem from "./CartItem";
+import StripeCheckout from "react-stripe-checkout";
+import swal from "sweetalert";
 class CartBody extends Component {
   constructor() {
     super();
@@ -11,6 +13,28 @@ class CartBody extends Component {
       total: 0
     };
     this.deleteFromCart = this.deleteFromCart.bind(this);
+  }
+  onToken = token => {
+    fetch("/save-stripe-token", {
+      method: "POST",
+      body: JSON.stringify(token)
+    }).then(response => {
+      console.log(response);
+      this.simulateCheckout(response);
+      // response.json().then(data => {
+      //   console.log(data);
+      // });
+    });
+  };
+  simulateCheckout(response) {
+    if (response) {
+      swal("Thank You For Shopping MechMarket!!");
+      this.setState({
+        cart: []
+      });
+    } else {
+      swal("Failure");
+    }
   }
   componentDidMount() {
     axios
@@ -36,6 +60,10 @@ class CartBody extends Component {
       (total, currentValue) => total + Number(currentValue.product_price),
       0
     );
+    let totalInCents = function() {
+      return totalOfItems + ".00";
+    };
+    let converted = totalOfItems * 100;
     const cart = this.state.cart;
     const cartListRender = cart.map((product, i) => {
       const {
@@ -70,9 +98,17 @@ class CartBody extends Component {
         </div>
         <div className="main-cart-body-section" id="checkout">
           <div className="checkout-total">
-            <h1>${totalOfItems}</h1>
+            <h1>${totalInCents()}</h1>
             <h4>Excludes Tax And Shipping</h4>
-            <button>CheckOut</button>
+            <StripeCheckout
+              stripeKey="pk_test_u1TUgTCY8tX2jhpsH4LyIo5L"
+              token={this.onToken}
+              name="MechMart"
+              description="KeyboardStuff"
+              amount={converted}
+              currency="USD"
+              shippingAddress={true}
+            />
           </div>
         </div>
       </div>
