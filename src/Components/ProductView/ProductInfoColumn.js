@@ -20,7 +20,7 @@ function ProductInfoColumn(props) {
       <div className="product-info-column-section">
         <div id="quantity-input-div">
           <h4>Quantity</h4>
-          <input id="quantity-input" />
+          <input id="quantity-input" value=" 1" style={{ fontSize: "16px" }} />
         </div>
         <button
           id="checkout-button"

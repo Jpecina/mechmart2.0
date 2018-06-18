@@ -4,6 +4,7 @@ const GET_USERS = "GET_USERS";
 const GET_FEATURED_PRODUCTS = "GET_FEATURED_PRODUCTS";
 const GET_All_PRODUCTS = "GET_All_PRODUCTS";
 const GET_PRODUCTS_BY_CATEGORY = "GET_PRODUCTS_BY_CATEGORY";
+
 // ACTION CREATORS
 
 export function getUsers() {
@@ -63,6 +64,7 @@ const initialState = {
   allProducts: []
 };
 
+// Reducer
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case `${GET_USERS}_PENDING`:

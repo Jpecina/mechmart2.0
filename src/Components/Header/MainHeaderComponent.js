@@ -36,9 +36,7 @@ class MainHeaderComponent extends Component {
     }
   }
   logOut() {
-    axios.get("/api/logout").then(response => {
-      return response;
-    });
+    axios.get("/api/logout");
   }
   render() {
     // console.log("the user after mount", this.state.user);

@@ -22,10 +22,12 @@ const cart_controllers = require("./controller/cart_controller");
 // charge.then(response => console.log(response));
 // console.log(charge);
 
+
+
 const port = 3001;
 
 const app = express();
-
+app.use( express.static( `${__dirname}/../build` ) );
 const {
   CONNECTION_STRING,
   DOMAIN,
@@ -179,6 +181,12 @@ app.post("/api/cart", (req, res, next) => {
   console.log("cart add ", req.body);
   req.session.user.cart.push(req.body);
   res.status(200).json(req.session.user);
+});
+
+
+const path = require('path');
+app.get('*', (req, res)=>{
+    res.sendFile(path.join(__dirname, '../build/index.html'));
 });
 
 // deletes item from cart
